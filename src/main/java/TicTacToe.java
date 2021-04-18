@@ -14,10 +14,16 @@ static ArrayList<Integer> cpuPosition = new ArrayList<Integer>();
         Scanner scan = new Scanner(System.in);
         while(true){
             System.out.println("Pick a number (1-9)");
-            int playerPosition = scan.nextInt();
+            int playerPos = scan.nextInt();
+            while(playerPosition.contains(playerPos) || cpuPosition.contains(playerPos)){
+                System.out.println("Position taken, pick another number");
+            }
             placePiece(gameBoard, playerPosition, "player");
             Random random = new Random();
-            int cpuPosition = random.nextInt(9) + 1;
+            int cpuPos = random.nextInt(9) + 1;
+            while(playerPosition.contains(cpuPos) || cpuPosition.contains(cpuPos)){
+                cpuPos = random.nextInt(9) + 1;
+            }
             placePiece(gameBoard, cpuPosition, "cpu");
             displayGameBoard(gameBoard);
             checkWinner();
