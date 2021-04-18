@@ -18,23 +18,14 @@ public class TicTacToe {
             while(playerPosition.contains(playerPos) || cpuPosition.contains(playerPos)){
                 System.out.println("Position taken, pick another number");
             }
-            placePiece(gameBoard, playerPosition, "player");
+            placePiece(gameBoard, playerPos, "player");
             String result = checkWinner();
-            if(result.length() > 0 ){
-                System.out.println(result);
-                break;
-            }
             Random random = new Random();
             int cpuPos = random.nextInt(9) + 1;
             while(playerPosition.contains(cpuPos) || cpuPosition.contains(cpuPos)){
                 cpuPos = random.nextInt(9) + 1;
             }
-            result = checkWinner();
-            if(result.length() > 0 ){
-                System.out.println(result);
-                break;
-            }
-            placePiece(gameBoard, cpuPosition, "cpu");
+            placePiece(gameBoard, cpuPos, "cpu");
             displayGameBoard(gameBoard);
             checkWinner();
         }
