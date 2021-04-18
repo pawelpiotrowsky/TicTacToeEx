@@ -19,10 +19,20 @@ public class TicTacToe {
                 System.out.println("Position taken, pick another number");
             }
             placePiece(gameBoard, playerPosition, "player");
+            String result = checkWinner();
+            if(result.length() > 0 ){
+                System.out.println(result);
+                break;
+            }
             Random random = new Random();
             int cpuPos = random.nextInt(9) + 1;
             while(playerPosition.contains(cpuPos) || cpuPosition.contains(cpuPos)){
                 cpuPos = random.nextInt(9) + 1;
+            }
+            result = checkWinner();
+            if(result.length() > 0 ){
+                System.out.println(result);
+                break;
             }
             placePiece(gameBoard, cpuPosition, "cpu");
             displayGameBoard(gameBoard);
@@ -32,7 +42,7 @@ public class TicTacToe {
 
     }
 
-    private static void checkWinner() {
+    private static String checkWinner() {
         List topRow = Arrays.asList(1, 2, 3);
         List midRow = Arrays.asList(4, 5, 6);
         List botRow = Arrays.asList(7, 8, 9);
@@ -60,6 +70,7 @@ public class TicTacToe {
                 System.out.println("Board full ,tie");
             }
         }
+        return null;
     }
 
 
